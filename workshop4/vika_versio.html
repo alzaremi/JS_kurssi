@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <title>Työpaja 4</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <hr />
+  <h2 id="workshop4">Työpaja 4</h2>
+  <h2 id="task1">Tehtävä 1: Perus- DOM-muokkaus</h2>
+  <p>
+    <button onclick="changeHeading();">Painike 1</button>
+    <button onclick="changeStyle();">Painike 2</button>
+    <button onclick="changeText();">Painike 3</button>
+  </p>
+  <ul>
+    <li>
+      Ensimmäisen painikkeen tulisi muuttaa sivun "Työpaja 4" -otsikon sisältö muotoon "Muokattu otsikko!".
+    </li>
+    <li>
+      Toisen painikkeen tulisi muuttaa sivun "Tehtävä 2" -otsikon tyyliä.
+    </li>
+    <li>
+      Kolmas painike korvaa allaolevan Lorem Ipsum -tekstin omalla tekstilläsi.
+      <br /><br />
+      <strong id="lorem">
+        dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum
+        sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed
+        sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae,
+        consectetuer et venenatis eget velit. "
+      </strong>  
+    </li>
+  </ul>
+
+  <hr />
+  <h2 id="task2">Tehtävä 2: Kuvat ja alasvetovalikot</h2>
+  <p>Valitse uusi auto listasta.</p>
+  <select name="mySelect" id="mySelect" onchange="showCarSelection(); changeCarImage();">
+    <option value="BMW">BMW</option>
+    <option value="Audi">Audi</option>
+    <option value="Mercedes">Mercedes</option>
+    <option value="Volvo">Volvo</option>
+  </select>
+  <br /><br />
+  <img alt="Auto" src="https://upload.wikimedia.org/wikipedia/commons/4/45/BMW_M8_Coupe_IMG_001.jpg"
+       width="400" id="carimage" />
+
+  <hr />
+  <h2 id="task3">Tehtävä 3: Taulukot</h2>
+  <h3>Palkkalomake</h3>
+  Nimi: <input type="text" id="nimi" /><br />
+  Tehtävä: <input type="text" id="tehtava" /><br />
+  Palkka: <input type="text" id="palkka" /><br /><br>
+  <input type="button" value="Lisää" onclick="addRow()" />
+
+  <table id="data" border="1">
+    <thead>
+      <tr>
+        <th>Nimi</th>
+        <th>Tehtävä</th>
+        <th>Palkka</th>
+        <th>Toiminnot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tiger Nixon</td>
+        <td>System Architect</td>
+        <td>$320 800</td>
+        <td><button onclick="deleteRow(this)">Poista</button></td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>$170 750</td>
+        <td><button onclick="deleteRow(this)">Poista</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function changeHeading() {
+      const title = document.getElementById("workshop4");
+      title.textContent = "Muokattu otsikko!";
+    }
+    function changeStyle() {
+      const h2 = document.getElementById("task2");
+      h2.style.fontSize = "20px";
+      h2.style.fontStyle = "italic";
+      h2.style.color = "pink";
+      h2.style.backgroundColor = "black";
+    }
+    function changeText() {
+      const p = document.getElementById("lorem");
+      p.innerHTML = '<em>"Emilia on velho ja maailman paras hakkeri!"</em>';
+    }
+
+    function showCarSelection() {
+      const carSelect = document.getElementById("mySelect");
+      const selectedCar = carSelect.value;
+      alert("Valitsit auton: " + selectedCar);
+    }
+    function changeCarImage() {
+      const carSelect = document.getElementById("mySelect");
+      const selectedCar = carSelect.value;
+      const carImage = document.getElementById("carimage");
+      switch (selectedCar) {
+        case "BMW":
+          carImage.src = "https://upload.wikimedia.org/wikipedia/commons/4/45/BMW_M8_Coupe_IMG_001.jpg";
+          break;
+        case "Audi":
+          carImage.src = "https://upload.wikimedia.org/wikipedia/commons/6/60/Audi_A4_B9_IMG_0666.jpg";
+          break;
+        case "Mercedes":
+          carImage.src = "https://upload.wikimedia.org/wikipedia/commons/9/9f/Mercedes-Benz_C_220_d_2020_IMG_0865.jpg";
+          break;
+        case "Volvo":
+          carImage.src = "https://upload.wikimedia.org/wikipedia/commons/3/36/Volvo_XC60_2018_IMG_0020.jpg";
+          break;
+      }
+    }
+    const carImage = document.getElementById("carimage");
+    carImage.addEventListener("mouseover", function () {
+      carImage.style.border = "5px solid red";
+    });
+    carImage.addEventListener("mouseout", function () {
+      carImage.style.border = "none";
+    });
+
+    function addRow() {
+      const nimi = document.getElementById("nimi").value.trim();
+      const tehtava = document.getElementById("tehtava").value.trim();
+      const palkka = document.getElementById("palkka").value.trim();
+
+      if (nimi.length <= 5) {
+        alert("Nimen tulee olla yli 5 merkkiä pitkä");
+        return;
+      }
+      if (tehtava === "") {
+        alert("Tehtävä ei saa olla tyhjä");
+        return;
+      }
+      if (isNaN(palkka) || palkka <= 0) {
+        alert("Palkan tulee olla numero ja suurempi kuin 0");
+        return;
+      }
+
+      const table = document.getElementById("data").getElementsByTagName("tbody")[0];
+      const newRow = table.insertRow();
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+      const cell4 = newRow.insertCell(3);
+
+      cell1.textContent = nimi;
+      cell2.textContent = tehtava;
+      cell3.textContent = "$" + palkka;
+      cell4.innerHTML = '<button onclick="deleteRow(this)">Poista</button>';
+
+      document.getElementById("nimi").value = "";
+      document.getElementById("tehtava").value = "";
+      document.getElementById("palkka").value = "";
+    }
+
+    function deleteRow(button) {
+      const row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+  </script>
+</body>
+</html>
