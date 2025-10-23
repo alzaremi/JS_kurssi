@@ -1,0 +1,1 @@
+Sovellus, joka antaa käyttäjän listata tehtäviä. Tehtäviä voi poistaa listasta tai merkitä tehdyksi. Listan kohdat säilyvät localStoragessa. Kirsikkana kakun päällä sovellus arpoo käyttäjän halutessa seuraavaksi suoritettavan tehtävän.

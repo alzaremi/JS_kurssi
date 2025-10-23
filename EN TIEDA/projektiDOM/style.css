@@ -1,0 +1,156 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(88, 7, 48);
+    margin: 0;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    color: rgb(232, 182, 215);
+}
+.to-do_container {
+    width: 380px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(20, 30, 40, 0.08);
+    padding: 18px;
+}
+h1{
+    text-align: center;
+    margin: auto;
+    font-size: 60px;
+    color: rgb(232, 182, 215);
+}
+h2 {
+    color: rgb(232, 182, 215);
+    text-align: center;
+}
+.input-row {
+    gap: 8px;
+    text-align: center;
+}
+
+#taskInput{
+    flex: 1;
+    border-radius: 160px;
+    border: 1px solid;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    padding: 5px;
+    
+}
+
+#addButton{
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: scroll #f47ed3;
+    color: rgb(88, 8, 2);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#taskList{
+    list-style-type: disc;
+    padding:0;
+    margin-top: 17px;
+}
+
+#clearButton {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: scroll #f47ed3;
+    color: rgb(88, 8, 2);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-top: 4px;
+}
+
+.invalid {
+  border: 3px solid rgb(236, 6, 6) !important;
+  background-color: lightpink;
+}
+
+.success {
+  border: 2px solid green;
+  background-color: #e6ffe6;
+}
+
+.done-btn {
+     margin-left: 10px;
+    cursor: pointer;
+    background: none; 
+    border: none; 
+    font-size: 16px;
+    color: green;
+}
+
+.delete-btn {
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: red;
+}
+
+#randomButton{
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: scroll #f47ed3;
+    color: rgb(88, 8, 2);
+    cursor: pointer;
+    font-weight: 600;
+    
+}
+
+#to-do_container {
+    text-align: center;
+}
+
+.random-task-container {
+    text-align: center;
+}
+
+#addButton:hover,
+#clearButton:hover,
+#randomButton:hover {
+    background-color: #e78c70;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+
+#taskList li:hover {
+    background-color: #fff0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: 0.2s;
+}
+
+
+.done-btn:hover {
+    color: darkgreen;
+}
+
+.delete-btn:hover {
+    color: darkred;
+}
+.app-wrapper {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgb(119, 16, 68);
+    border: 2px solid rgb(245, 200, 223);
+    border-radius: 12px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.40);
+    text-align: center;
+}
+
