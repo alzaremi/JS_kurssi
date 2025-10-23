@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/PROJEKTI1/style.css">
+    <title>TO-DO:</title>
+</head>
+<body>
+    <div class="app-wrapper">
+    <div class="to-to_container">
+        <h1>To Do Lista</h1>
+        <h2>Lisää tehtäviä:</h2>
+        <form class="input-row" id="taskForm">
+            <input id="taskInput" type="text" placeholder="  Kirjoita tähän..." required minlength="3"> <br> <br>
+            <button type="submit" id="addButton" >Lisää</button> 
+            <button type="button"  id="clearButton">Tyhjennä kaikki</button>
+        </form>
+        <p id="tehtavaError" class="error"></p>
+        <ul id="taskList"></ul>
+    </div>
+    <div class="random-task-container">
+        <p id="randomText">Arvotaanko tehtävä?</p>
+        <button type="button" id="randomButton">Arvo seuraava tehtävä!</button>
+        <p id="randomTask"></p>
+    </div>
+    </div>
+<script src="/PROJEKTI1/script.js"></script>
+</body>
+</html>
