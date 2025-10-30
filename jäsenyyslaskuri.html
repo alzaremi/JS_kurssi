@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jäsenyyslaskuri</title>
+    <link rel="stylesheet" href="/EN TIIÄ VIEL/workshop5/styles.css">
+</head>
+<body>
+    <h1 class="otsikko">JÄSENYYSLASKURI</h1>
+    <form id="membershipForm">
+        <fieldset>
+            <legend>Laske jäsenyytesi hinta</legend>
+            <p>Jos liityt jäseneksi yli kahdeksi vuodeksi, saat 20% alennuksen!</p>
+
+
+            <div>
+                <label for="type">Jäsenyys</label>
+                <select name="type" id="type" size="4" required>
+                    <option value="10">Basic - 10.00 &euro; /vuosi</option>
+                    <option value="15">Premium - 15.00 &euro; /vuosi</option>
+                    <option value="20">Gold - 20.00 &euro;/vuosi</option>
+                    <option value="25">Platinum - 25.00 &euro;/vuosi</option>
+                </select>
+            </div>
+
+
+            <div>
+                <label for="years">Vuosia</label>
+                <input type="number" name="years" id="years" min="1" required>
+            </div>
+
+
+            <div>
+                <label for="cost">Hinta</label>
+                <input type="text" name="cost" id="cost" disabled>
+            </div>
+
+
+            <input type="submit" value="Laske" id="submit">
+        </fieldset>
+    </form>
+
+    <p data-line="20">&nbsp;</p>
+    <hr />
+    <script>
+        //Haetaan lomake HTML:stä
+        const form = document.getElementById("membershipForm");
+        //Lisätään kuunelija submit-tapahtumalle
+form.addEventListener("submit", function(event) {
+    //Estetään lomakkeen lähetys niin, että sivu lataa uudelleen
+    event.preventDefault();
+    //Haetaan valitty jäsenyys ja vuodet
+    const typePrice =parseFloat(document.getElementById("type").value);
+    const years = parseInt(document.getElementById("years").value);
+
+    //Lasketaan hinta
+    let total = typePrice * years;
+
+    //Jos jäsenyys on yli 2 vuotta, annetaan 20% alennus
+    if (years > 2 ) {
+        total *= 0.8;
+        alert("Sait 20% alennusta!");
+    }
+
+    //Jos jäsenyys on yli 5 vuotta, annetaan vielä 20% alennuksen lisäksi 5€ alennus
+    if (years > 5) {
+        total = total -5;
+        alert("Sait vielä 5€ alennuksen!");
+    }
+
+    
+    //Näytetään hinta "hinta"-kentässä
+    document.getElementById("cost").value = total.toFixed(2) + " €";
+});
+    </script>
+</body>
+</html>
